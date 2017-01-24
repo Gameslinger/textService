@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>First Names</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<div>
+    <h1>Result</h1>
+    <table style="border: 1px solid black; text-align: center;">
+        <tr>
+       <th>Last</th>
+       <th>First</th>
+       <th>Number #</th>
+        </tr>
+        
+        <tr th:each="rec : *{recList}">
+            <td th:text="${rec.LastName}+','"></td>
+            <td th:text="${rec.FirstName}"></td>
+            <td th:text="${rec.Number}"></td>
+        
+        </tr>
+        
+    </table>
+</div>
+</body>
+</html>

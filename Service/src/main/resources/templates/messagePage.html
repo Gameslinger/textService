@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Main Page</title>
+        <meta charset="UTF-8">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="stylesheet" href="stylesheet.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <style>
+            body {background-color:#a4c2f4;}
+        </style>
+    </head>
+    
+    <body>
+        <header>
+            <a href="index.html">
+                <img src='http://piskel-imgstore-b.appspot.com/img/bc7bbc28-bc02-11e6-9dde-fd15ed4917e5.gif' height='60' width='60'>
+            </a>
+            <a href="logOut.html" class="user">
+                <button>Log Out</button>
+            </a>
+        </header>
+        <div class="container-fluid">
+                <div class="col-lg-3 col-md-4 col-sm-5 hidden-xs" data-spy="scroll">
+                    
+                    <table style=" border: 1px solid black; background-color:#f2f2f2;" class="topTable">
+                        <thead>
+                            <th>Name</th>
+                            <th>First Name</th>
+                            <th>Phone #</th>
+                        </thead>
+                    </table>
+                    <div class="bodycontainer scrollable" >    
+                        <table style="background-color:#f3f3f3;" >
+                            <tbody class="bottomTable" >
+                                <tr th:each="rec : *{recList}">
+            <td th:text="${rec.LastName}+','"></td>
+            <td th:text="${rec.FirstName}"></td>
+            <td th:text="${rec.Number}"></td>
+        
+        </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                             
+                            <div class="text-center" style="padding-top:10px;">
+                                <div class="centerBlock">
+                                    <a href="edit.html">
+                                        <button>Edit</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form action="#" th:action="@{/messageSend}" th:object="${message}" method="post">
+                <div class="col-lg-9 col-md-8 col-sm-7 col-xs-12">
+                    <div class="row">
+                    
+                        <div class="form-group" >
+                            <p>Message: <input type="text" th:field="*{content}" /></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="text-center">
+                            <div class="centerBlock">
+                                <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </form>
+        </div>
+    </body>
+</html>
+
