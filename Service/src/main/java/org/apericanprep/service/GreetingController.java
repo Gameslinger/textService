@@ -33,6 +33,7 @@ public class GreetingController {
     public String message(Model model){
         MocRecipientService rec = new MocRecipientService();
         model.addAttribute("recList",rec.findAll());
+        model.addAttribute("message",new Message());
         return "messagePage";
     }
      
