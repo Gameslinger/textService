@@ -12,23 +12,23 @@ import java.util.List;
  * @author Gabriel.Maxfield
  */
 public class Message {
+
     List<Recipient> recipients;
-    
-    public enum Status {
-    SUCCESSFUL, PENDING, FAILED
-}
+
     final int id;
     static int currentId = 0;
-    private Status status;
+    private String status;
     private String content;
 
     public Message(String msg, List<Recipient> recipients) {
         this.content = msg;
-        this.status = Status.PENDING;
+        this.status = "PENDING";
         this.id = currentId++;
     }
-    public Message(){
+
+    public Message() {
         this.id = currentId++;
+        this.status = "PENDING";
     }
 
     public String getContent() {
@@ -38,15 +38,29 @@ public class Message {
     public void setContent(String content) {
         this.content = content;
     }
+
+    public void setFailure() {
+        this.status = "FAILURE";
+    }
+    
+    public void setSuccess() {
+        this.status = "SUCCESS";
+    }
+    
+    public void setPending() {
+        this.status = "PENDING";
+    }
+    
+    public void setPartial() {
+        this.status = "PARTIAL";
+    }
     
     public String getStatus() {
-        return status.toString();
+        return status;
     }
 
     public int getId() {
         return id;
     }
-    
-    
-}
 
+}

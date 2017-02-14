@@ -1,11 +1,19 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Getting Started: Handling Form Submission</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-</head>
-<body>
-	<h1>Result</h1>
-    <p th:text="'Message: ' + ${message.content}" />
-</body>
+    <head>
+        <title>Getting Started: Handling Form Submission</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <h1>Result</h1>
+        <p th:text="'Message: ' + ${message.content}" />
+        <h1>Status</h1>
+        <div th:switch="${message.status}"> 
+            <p th:case="'PENDING'">Your message is currently pending...</p>
+            <p th:case="'FAILURE'"><font color="#ff0000">Your message failed to send completely.</font></p>
+            <p th:case="'SUCCESS'">Your message was successfully sent.</p> 
+            <p th:case="'PARTIAL'"><font color="#ff0000">Your message failed to send to one or more recipients.</font></p>
+            <p th:case="*"><font color="#fef0f0">ILLEGAL PARAMETERS</font></p>
+        </div>
+    </body>
 </html>
